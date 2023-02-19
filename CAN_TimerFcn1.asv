@@ -1,0 +1,7 @@
+function CAN_TimerFcn1(obj,event)
+% CAN_TimerFcn1使用app CAN 通信时时钟的回调函数1
+%   打印接收到的帧
+outputArg1 = inputArg1;
+outputArg2 = inputArg2;
+end
+

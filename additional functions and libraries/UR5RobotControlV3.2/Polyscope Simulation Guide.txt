@@ -1,0 +1,4 @@
+- In Vmware network settings select NAT Vmware vmnet 8
+- In Matlab being server mode: No need to setup an ip setting in polyscope. Just make sure your server accepts connection from any address. It works with Matlab and python both. Tested!
+In Polyscope see ip from vm1 windows connections, possibly 192.169.73.1, port 30000
+- In Matlab being client mode: see ip by right clicking on network button in ubuntu; set polyscope ip appropriately. Use probably:(192.168.220.131) port 30002

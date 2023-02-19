@@ -1,0 +1,128 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="1171166911" file="D:\本科毕业设计\Matlab仿真程序\CDPR_Project_HITSZ1\CDPR_Simulation.prj" location="D:\本科毕业设计\Matlab仿真程序\CDPR_Project_HITSZ1" name="CDPR_Simulation" target="target.mlapps" target-name="Package App">
+    <param.appname>CDPR_Simulation</param.appname>
+    <param.authnamewatermark>Tang Kai</param.authnamewatermark>
+    <param.email />
+    <param.company>HITSZ</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Inverse kinematic and 5-order linear trajectory planning of an 8-cable CDPR proposed by TK</param.summary>
+    <param.description>Part of my final graduate project</param.description>
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms>
+      <item>win64</item>
+    </param.platforms>
+    <param.output>${PROJECT_ROOT}\TK's App Package\Version1.1</param.output>
+    <param.guid>c2c81ddf-3806-4316-a165-b3808d0f9f3b</param.guid>
+    <unset>
+      <param.email />
+      <param.icon />
+      <param.icons />
+      <param.screenshot />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\Modular_CDPR_TK.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\anchorDistance.mat</file>
+      <file>${PROJECT_ROOT}\AnchorTraj.m</file>
+      <file>${PROJECT_ROOT}\anchorUniVec_P.mat</file>
+      <file>${PROJECT_ROOT}\calCableSqrDis_CGAL.mexw64</file>
+      <file>${PROJECT_ROOT}\CdprCable.m</file>
+      <file>${PROJECT_ROOT}\CDPRInvKine.m</file>
+      <file>${PROJECT_ROOT}\CdprMovAnchor.m</file>
+      <file>${PROJECT_ROOT}\CdprPlatform.m</file>
+      <file>${PROJECT_ROOT}\CdprTrajInfo.m</file>
+      <file>${PROJECT_ROOT}\Edge.m</file>
+      <file>${PROJECT_ROOT}\edge.mat</file>
+      <file>${PROJECT_ROOT}\Face.m</file>
+      <file>${PROJECT_ROOT}\face.mat</file>
+      <file>${PROJECT_ROOT}\ObsBB.m</file>
+      <file>${PROJECT_ROOT}\openGJK.mexw64</file>
+      <file>${PROJECT_ROOT}\PlatformTraj.m</file>
+      <file>${PROJECT_ROOT}\plotCircle3D.m</file>
+      <file>${PROJECT_ROOT}\Rzyx.m</file>
+      <file>${PROJECT_ROOT}\trajPlan1.m</file>
+      <file>${PROJECT_ROOT}\trajPlan2.m</file>
+      <file>${PROJECT_ROOT}\Tzyx.m</file>
+      <file>${PROJECT_ROOT}\Vertex.m</file>
+      <file>${PROJECT_ROOT}\vertex.mat</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}\TK's App Package" name="Version1.1" optional="false">D:\本科毕业设计\Matlab仿真程序\CDPR_Project_HITSZ1\TK's App Package\Version1.1</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>D:\MATLAB\R2020a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="gpucoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="neuralnetwork" />
+        <toolbox name="polyspacebugfinder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <gpucoder>
+          <enabled>true</enabled>
+        </gpucoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

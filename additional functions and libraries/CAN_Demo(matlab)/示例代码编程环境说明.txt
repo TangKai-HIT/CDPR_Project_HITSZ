@@ -1,0 +1,20 @@
+示例代码文件夹名称-----------------------开发环境
+C#_Example(VS2005)-----------------------VS2005
+C++ Builder6_Example---------------------C++ Builder6
+delphi7_Example--------------------------Delphi7
+LabVIEW Examle(8.6)----------------------LabVIEW8.6
+LabWindows2013_Example-------------------LabWindows/CVI 2013 SP1
+USB CAN Tool 源代码(LabVIEW 2011环境)----LabVIEW2011
+VB.NET Example---------------------------Microsoft Visual Studio 2005
+VB_Example-------------------------------VB6.0
+VC_Example-------------------------------VC6.0/Microsoft Visual Studio 2008
+QT_Example-------------------------------QT5.9.3
+python3.8.0------------------------------python3.8.0
+CAN_Demo(matlab)-------------------------MATLAB：R2009b
+
+注意：
+所有工程样例都已在相应的开发环境下编译、调试成功，
+第一次开发请使用相应版本的开发环境调试，
+待编译、调试成功后，再转换为更高的版本，
+以避免版本间转换过程产生不明错误致编译、调试不成功。
+样例只是一个简单的调用DLL库函数的样例，用户需要跟据自已的需要，优化代码。

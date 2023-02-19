@@ -1,0 +1,102 @@
+def matlabcoontrol3dmouse():
+  set_analog_inputrange(0, 0)
+  set_analog_inputrange(1, 0)
+  set_analog_inputrange(2, 0)
+  set_analog_inputrange(3, 0)
+  set_analog_outputdomain(0, 0)
+  set_analog_outputdomain(1, 0)
+  set_tool_voltage(0)
+  set_runstate_outputs([])
+  set_payload(0.0)
+  set_gravity([0.0, 0.0, 9.82])
+  flag_N=1
+  varmsg("flag_N",flag_N)
+  i_var_1=1
+  varmsg("i_var_1",i_var_1)
+  MTool_pos=p[0, 0, 0, 0, 0, 0]
+  varmsg("MTool_pos",MTool_pos)
+  Base=p[0.0,0.0,0.0,0.0,0.0,0.0]
+  varmsg("Base",Base)
+  Tool=get_forward_kin()
+  varmsg("Tool",Tool)
+  $ 23 "SubProgram_1"
+  def SubProgram_1():
+    receive_data=socket_read_ascii_float(6)
+    if (receive_data[0] !=6):
+      socket_send_string("0")
+    else:
+      socket_send_string("1")
+      global pointer = 0
+      varmsg("pointer",pointer)
+      while (pointer <receive_data[0]):
+        Move_To_Pos[pointer]=receive_data[pointer+1]
+        global pointer = pointer+1
+        varmsg("pointer",pointer)
+      end
+    end
+  end
+  $ 33 "SubProgram_2"
+  def SubProgram_2():
+    pose_1=get_forward_kin()
+    socket_send_string(pose_1)
+  end
+  $ 1 "BeforeStart"
+  $ 2 "receive_data≔[6,0,0,0,0,0,0]"
+  global receive_data = [6,0,0,0,0,0,0]
+  varmsg("receive_data",receive_data)
+  $ 3 "Move_To_Pos≔[0,0,0,0,0,0]"
+  global Move_To_Pos = [0,0,0,0,0,0]
+  varmsg("Move_To_Pos",Move_To_Pos)
+  $ 4 "pose_1=get_forward_kin()"
+  pose_1=get_forward_kin()
+  $ 5 "pointer≔0"
+  global pointer = 0
+  varmsg("pointer",pointer)
+  $ 6 "While pointer<receive_data[0]"
+  while (pointer <receive_data[0]):
+    $ 7 "Move_To_Pos[pointer]=pose_1[pointer]"
+    Move_To_Pos[pointer]=pose_1[pointer]
+    $ 8 "pointer≔pointer+1"
+    global pointer = pointer+1
+    varmsg("pointer",pointer)
+  end
+  $ 9 "socket_open('192.168.73.1',30000)"
+  socket_open("192.168.73.1",30000)
+  $ 10 "task≔[0,0]"
+  global task = [0,0]
+  varmsg("task",task)
+  $ 11 "Move_To_Pos≔[0,0,0,0,0,0]"
+  global Move_To_Pos = [0,0,0,0,0,0]
+  varmsg("Move_To_Pos",Move_To_Pos)
+  $ 21 "Thread_1"
+  thread Thread_1():
+    while True:
+      speedl(Move_To_Pos,a=0.5,t_min=0.01)
+    end
+  end
+  threadId_Thread_1 = run Thread_1()
+  while (True):
+    $ 12 "Robot Program"
+    $ 13 "task=socket_read_ascii_float(1)"
+    task=socket_read_ascii_float(1)
+    $ 14 "If task[1]≟1"
+    if (task[1] ==1):
+      $ 15 "Call SubProgram_1"
+      SubProgram_1()
+      $ 16 "task≔[0,0]"
+      global task = [0,0]
+      varmsg("task",task)
+    else:
+      $ 17 "ElseIf task[1]≟2"
+      if (task[1] ==2):
+        $ 18 "Call SubProgram_2"
+        SubProgram_2()
+        $ 19 "task≔[0,0]"
+        global task = [0,0]
+        varmsg("task",task)
+      end
+    end
+    $ 20 "Wait: 0.01"
+    sleep(0.01)
+  end
+end

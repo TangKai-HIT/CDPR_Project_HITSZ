@@ -1,0 +1,36 @@
+ Program
+   BeforeStart
+     receive_data≔[6,0,0,0,0,0,0]
+     Move_To_Pos≔[0,0,0,0,0,0]
+     pose_1=get_forward_kin()
+     pointer≔0
+     While pointer<receive_data[0]
+       Move_To_Pos[pointer]=pose_1[pointer]
+       pointer≔pointer+1
+     socket_open("192.168.73.1",30000)
+     task≔[0,0]
+     Move_To_Pos≔[0,0,0,0,0,0]
+   Robot Program
+     task=socket_read_ascii_float(1)
+     If task[1]≟1
+       Call SubProgram_1
+       task≔[0,0]
+     ElseIf task[1]≟2
+       Call SubProgram_2
+       task≔[0,0]
+     Wait: 0.01
+   Thread_1
+     speedl(Move_To_Pos,a=0.5,t_min=0.01)
+   SubProgram_1
+     receive_data=socket_read_ascii_float(6)
+     If receive_data[0]≠6
+       socket_send_string("0")
+     Else
+       socket_send_string("1")
+       pointer≔0
+       While pointer<receive_data[0]
+         Move_To_Pos[pointer]=receive_data[pointer+1]
+         pointer≔pointer+1
+   SubProgram_2
+     pose_1=get_forward_kin()
+     socket_send_string(pose_1)

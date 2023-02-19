@@ -1,0 +1,2 @@
+1、matlab使用的ControlCAN.h与其它样例的有所不同。
+2、64位编译器请用64位的DLL与lib文件。
